@@ -5,9 +5,4 @@ public enum CATMagicEnum {
     CAST_TELEPORT,
     //CAST_CURSE,
 
-    //F2P
-    CAST_LOWALCH,
-    CAST_HIGHTALCH,
-
-    CAST
 }

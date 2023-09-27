@@ -1,9 +1,6 @@
 package com.example.CATMagic;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Keybind;
+import net.runelite.client.config.*;
 
 @ConfigGroup("CATMagic")
 public interface CATMagicConfig extends Config {
@@ -24,7 +21,8 @@ public interface CATMagicConfig extends Config {
             position = 1
     )
     default String itemsToAlch () {
-        return "";    }
+        return "";
+    }
 
     @ConfigItem(
             keyName = "F2P",
@@ -34,5 +32,40 @@ public interface CATMagicConfig extends Config {
     )
     default boolean F2POnly() {
         return true;
+    }
+
+    @ConfigSection(
+            name = "Game Tick Configuration",
+            description = "Configure how the bot handles game tick delays, 1 game tick equates to roughly 600ms",
+            position = 1
+    )
+    String delayTickConfig = "delayTickConfig";
+
+    @Range(
+            max = 10
+    )
+    @ConfigItem(
+            keyName = "tickDelayMin",
+            name = "Game Tick Min",
+            description = "",
+            position = 2,
+            section = delayTickConfig
+    )
+    default int tickDelayMin() {
+        return 1;
+    }
+
+    @Range(
+            max = 10
+    )
+    @ConfigItem(
+            keyName = "tickDelayMax",
+            name = "Game Tick Max",
+            description = "",
+            position = 3,
+            section = delayTickConfig
+    )
+    default int tickDelayMax() {
+        return 3;
     }
 }
