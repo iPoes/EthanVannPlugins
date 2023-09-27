@@ -31,7 +31,7 @@ public interface CATMagicConfig extends Config {
 
     @ConfigItem(
             keyName = "F2P",
-            name = "F2POnly",
+            name = "F2P Only",
             description = "Will only use F2P spells to level up magic",
             position = 2
     )
