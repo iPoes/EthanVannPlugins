@@ -20,7 +20,6 @@ import net.runelite.client.plugins.PluginManager;
 @PluginDependency(PacketUtilsPlugin.class)
 
 public class TradeHelperPlugin extends Plugin {
-    public interface Player extends Actor
     @Inject
     Client client;
     @Inject
