@@ -11,9 +11,7 @@ public interface TradeHelperConfig extends Config {
             description = "Run it now",
             position = 0
     )
-    default boolean Run() {
-        return true;
-    }
+    default boolean Run() { return false; }
 
     @ConfigSection(
             name = "Game Tick Configuration",
@@ -59,12 +57,29 @@ public interface TradeHelperConfig extends Config {
 
     @ConfigItem(
             keyName = "playerName",
-            name = "Trade Player by name",
+            name = "Send trade by player name",
             description = "",
             position = 2,
             section = playerSettingsConfig
     )
     default String playerName () {return "";}
+
+    @ConfigItem(
+            keyName = "playerInGear",
+            name = "Send trade when player contains gear",
+            description = "",
+            position = 3,
+            section = playerSettingsConfig
+    )
+    default String playerInGear () {return "";}
+    @ConfigItem(
+            keyName = "receiveTrade",
+            name = "Accept trade request",
+            description = "",
+            position = 4,
+            section = playerSettingsConfig
+    )
+    default boolean receiveTrade () {return false;}
     @Range(
             max = 50
     )
@@ -72,20 +87,14 @@ public interface TradeHelperConfig extends Config {
             keyName = "playerRange",
             name = "Trade range",
             description = "In what range would you like to send a trade request",
-            position = 3,
+            position = 5,
             section = playerSettingsConfig
     )
     default int playerRange() {
         return 5;
     }
 
-    @ConfigItem(
-            keyName = "tradeGear",
-            name = "Trade when player contains gear",
-            description = "",
-            position = 4,
-            section = playerSettingsConfig
-    )
-    default String playerInGear () {return "";}
+
+
 
 }

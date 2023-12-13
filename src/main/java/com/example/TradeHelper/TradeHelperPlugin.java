@@ -4,6 +4,7 @@ import com.example.EthanApiPlugin.EthanApiPlugin;
 import com.example.PacketUtils.PacketUtilsPlugin;
 import com.google.inject.Inject;
 import com.google.inject.Provides;
+import net.runelite.api.Actor;
 import net.runelite.api.Client;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.Plugin;
@@ -19,7 +20,7 @@ import net.runelite.client.plugins.PluginManager;
 @PluginDependency(PacketUtilsPlugin.class)
 
 public class TradeHelperPlugin extends Plugin {
-    public int timeout = 0;
+    public interface Player extends Actor
     @Inject
     Client client;
     @Inject
@@ -33,4 +34,5 @@ public class TradeHelperPlugin extends Plugin {
     public TradeHelperConfig getConfig (ConfigManager configManager) {
         return configManager.getConfig(TradeHelperConfig.class);
     }
+
 }
