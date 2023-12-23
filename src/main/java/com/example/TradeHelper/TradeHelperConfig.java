@@ -51,7 +51,7 @@ public interface TradeHelperConfig extends Config {
     @ConfigSection(
             name = "Player Settings",
             description = "Configure on what conditions it should interact with other players",
-            position = 1
+            position = 2
     )
     String playerSettingsConfig = "playerSettingsConfig";
 
@@ -74,7 +74,7 @@ public interface TradeHelperConfig extends Config {
     default String playerInGear () {return "";}
     @ConfigItem(
             keyName = "receiveTrade",
-            name = "Accept trade request",
+            name = "Accept trade request only",
             description = "",
             position = 4,
             section = playerSettingsConfig
@@ -90,11 +90,82 @@ public interface TradeHelperConfig extends Config {
             position = 5,
             section = playerSettingsConfig
     )
-    default int playerRange() {
+    default int tradeReceiveAndSend() {
         return 5;
     }
+    @ConfigSection(
+            name = "Send or receive config",
+            description = "Only accepts trades if the conditions are met",
+            position = 3
+    )
+    String tradeReceiveAndSend = "tradeReceiveAndSend";
 
+    @ConfigItem(
+            keyName = "coinsReceive",
+            name = "Receive coins?",
+            description = "Would you like to receive coins?",
+            position = 1,
+            section = tradeReceiveAndSend
+    )
+    default boolean coinsReceive () {return false;}
 
+    @Range(
+            max = 2147483647
+    )
+    @ConfigItem(
+            keyName = "coinsMin",
+            name = "Coins min",
+            description = "",
+            position = 2,
+            section = tradeReceiveAndSend
+    )
+    default int coinsMin() {
+        return 1;
+    }
 
+    @Range(
+            max = 2147483647
 
+    )
+    @ConfigItem(
+            keyName = "coinsMax",
+            name = "Coins max",
+            description = "Coins to receive in trade",
+            position = 3,
+            section = tradeReceiveAndSend
+    )
+    default int coinsMax() {
+        return 2147483647;
+    }
+
+    @ConfigItem(
+            keyName = "itemsReceive",
+            name = "Receive items?",
+            description = "Would you like to receive items?",
+            position = 4,
+            section = tradeReceiveAndSend
+    )
+    default boolean itemReceive () {return false;}
+
+    @Range(
+            max = 28
+    )
+    @ConfigItem(
+            keyName = "itemsAmount",
+            name = "Amount of items",
+            description = "",
+            position = 5,
+            section = tradeReceiveAndSend
+    )
+    default int itemsAmount() {
+        return 1;
+    }
+    @ConfigItem(
+            keyName = "itemName",
+            name = "What item(s) to receive",
+            description = "",
+            position = 6,
+            section = tradeReceiveAndSend
+    )
+    default String itemName () {return "";}
 }

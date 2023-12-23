@@ -13,7 +13,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.PluginManager;
 
 @PluginDescriptor(
-        name = "[HP] Trade Helper",
+        name = "<html><font color=\"#d65c37\">[HP]</font> Trade Helper</html>",
         enabledByDefault = false
 )
 @PluginDependency(EthanApiPlugin.class)
