@@ -11,7 +11,7 @@ public interface TradeHelperConfig extends Config {
             description = "Run it now",
             position = 0
     )
-    default boolean Run() { return false; }
+    default boolean Run() {return false;}
 
     @ConfigSection(
             name = "Game Tick Configuration",
