@@ -93,45 +93,7 @@ public class ResetSkullPlugin extends Plugin {
     public void atFeroxEncalve() {
 
     }
-    public void hopToLmsWorld(){
-        WorldResult worldResult = worldService.getWorlds();
-        if (worldResult == null) {
-            log.warn("Failed to get LMS worlds");
-            return;
-        }
-        List<World> worlds = worldResult.getWorlds();
-        if (worlds.isEmpty()) {
-            log.warn("No available worlds");
-            return;
-        }
-        int currentWorldId = client.getWorld();
-        WorldRegion currentWorldRegion = worldService.getWorlds().findWorld(currentWorldId).getRegion();
 
-        List<World> lmsWorlds = new ArrayList<>();
-
-        for (World lmsWorld : worlds) {
-            if (!lmsWorld.getActivity().equals("LMS Competitive") || lmsWorld.getId() == currentWorldId) {continue;}
-
-        }
-    }
-    private void hop(net.runelite.http.api.worlds.World world) {
-        final net.runelite.api.World rsWorld = client.createWorld();
-        rsWorld.setActivity(world.getActivity());
-        rsWorld.setAddress(world.getAddress());
-        rsWorld.setId(world.getId());
-        rsWorld.setPlayerCount(world.getPlayers());
-        rsWorld.setLocation(world.getLocation());
-        rsWorld.setTypes(WorldUtil.toWorldTypes(world.getTypes()));
-
-        if (client.getGameState() == GameState.LOGIN_SCREEN) {
-            client.changeWorld(rsWorld);
-            return;
-        }
-
-        log.info("Hopping to random world: {}", rsWorld);
-        net.runelite.api.World quickHopTargetWorld = rsWorld;
-        client.openWorldHopper();
-        client.hopToWorld(quickHopTargetWorld);
     }
 
 }
